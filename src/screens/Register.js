@@ -1,31 +1,49 @@
-import { View, Text } from 'react-native'
-import { auth } from '../firebase/config';
-// auth dejará disponibles métodos asincrónicos para registrar y loguear un usuario. Ambos requieren de los parámetros email y pass
-//Cada método debe implementarse dentro de las funciones de login y registro de nuestro proyecto.
+import { View, Text, TextInput, Button } from 'react-native'
+import {getAuth, createUserWhithEmailAndPassword} from "firebase/auth"
+import { SafeAreaView } from 'react-native-safe-area-context'
+import { useState } from 'react'
+import { auth } from '../firebase/config'
 
-// DOCUMENTACION: https://docs.google.com/presentation/d/1ak9HzhCmmpAdmRBLJq6w-yv9BLXuc1ftGSLC-k5PpJo/edit?usp=sharing
-
-//Registrar un usuario
-// auth.createUserWithEmailAndPassword(email, pass)
-
-//Logear un usuario
-// auth.signInWithEmailAndPassword(email, pass)
 
 
 
 const Register = () => {
+    const [name, onChangeName] = useState("")
+    const [email, onChangeEmail] = useState("")
+    const [password, onChangePassword] = useState("")
+    function register(){
+        console.log (auth)
+        console.log(email)
+        console.log(password)
+        //createUserWhithEmailAndPassword(auth, email, password)
+          //  .then(credential =>{
+            //    console.log(credential.user)
+            //})
+            //.catch(error => {
+              //  console.log(error)
+            //})
+    }
     return (
         <View>
             <Text>Register </Text>
-            {/* register(email, pass){
-                auth.createUserWithEmailAndPassword(email, pass)
-                    .then(response => {
-                        this.setState({ registered: true });
-                    })
-                    .catch(error => {
-                        this.setState({ error: 'Fallo en el registro.' })
-                    })
-            } */}
+
+            <SafeAreaView>
+                <View>
+                    <Text>Nombre de usuario</Text>
+                    <TextInput value={name} onChangeText={onChangeName} keyBoardType="default"/>
+                </View>
+                
+                <View>
+                    <Text>Email</Text>
+                    <TextInput value={email} onChangeText={onChangeEmail} keyBoardType="default"/>
+                </View>
+
+                <View>
+                    <Text>Password</Text>
+                    <TextInput value={password} onChangeText={onChangePassword} keyBoardType="default"/>
+                </View>
+                <Button title='Registrar'onPress={register}/>
+            </SafeAreaView>    
 
         </View>
     )
