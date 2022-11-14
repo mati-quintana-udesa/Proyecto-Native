@@ -1,11 +1,11 @@
 import {View, Text} from 'react-native'
 
-const Posts = () =>{
+const NewPost = () =>{
     return(
         <View>
-            <Text>Posts </Text>
+            <Text>NewPost </Text>
         </View>
     )
 }
 
-export default Posts 
+export default NewPost 
