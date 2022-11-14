@@ -1,11 +1,11 @@
 import {View, Text} from 'react-native'
 
-const Profile = () =>{
+const Posts = () =>{
     return(
         <View>
-            <Text>Profile </Text>
+            <Text>Posts </Text>
         </View>
     )
 }
 
-export default Profile
+export default Posts 
