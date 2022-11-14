@@ -1,6 +1,6 @@
-import {View, Text, Button, Alert} from 'react-native'
+import {View, Text, Button} from 'react-native'
 
-const Home = (navigation) =>{
+const Home = () =>{
     const handleOnPress = ()=>{navigation.navigate("Login")}    
     return(
         <View>
