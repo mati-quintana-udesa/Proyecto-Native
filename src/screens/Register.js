@@ -7,22 +7,16 @@ import { auth } from '../firebase/config'
 
 
 
+
 const Register = () => {
     const [name, onChangeName] = useState("")
     const [email, onChangeEmail] = useState("")
     const [password, onChangePassword] = useState("")
     function register(){
-        console.log (auth)
-        console.log(email)
-        console.log(password)
-        //createUserWhithEmailAndPassword(auth, email, password)
-          //  .then(credential =>{
-            //    console.log(credential.user)
-            //})
-            //.catch(error => {
-              //  console.log(error)
-            //})
-    }
+    auth.createUserWithEmailAndPassword(email,password)    
+    .then(Credential => {console.log(Credential.user)})
+    .catch(error => console.log(error))
+}
     return (
         <View>
             <Text>Register </Text>

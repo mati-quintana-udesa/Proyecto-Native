@@ -1,6 +1,5 @@
 import app from 'firebase/app';
 import firebase from 'firebase';
-import { getAuth } from 'firebase/auth';
 import {API_KEY, AUTH_DOMAIN, PROJECT_ID, STORAGE_BUCKET, MESSAGING_SENDER_ID, APP_ID} from "@env"
 
 const firebaseConfig = {
@@ -11,8 +10,6 @@ const firebaseConfig = {
     messagingSenderId: MESSAGING_SENDER_ID,
     appId: APP_ID,
   };
-console.log(firebaseConfig)
-  app.initializeApp(firebaseConfig);
-
-export const auth = firebase.auth()
-
+  console.log(firebaseConfig)
+  app.initializeApp(firebaseConfig)
+  export const auth = firebase.auth()
