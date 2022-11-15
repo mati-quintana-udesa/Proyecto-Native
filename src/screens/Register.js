@@ -1,22 +1,33 @@
-import { View, Text, TextInput, Button } from 'react-native'
-import {getAuth, createUserWhithEmailAndPassword} from "firebase/auth"
+import { View, Text, TextInput, Button, Alert } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { useState } from 'react'
-import { auth } from '../firebase/config'
+import authenticationConsumer from '../firebase/authentication/authenticationProvider'
 
 
 
 
 
 const Register = () => {
+    const {register} = authenticationConsumer()
     const [name, onChangeName] = useState("")
     const [email, onChangeEmail] = useState("")
     const [password, onChangePassword] = useState("")
-    function register(){
-    auth.createUserWithEmailAndPassword(email,password)    
-    .then(Credential => {console.log(Credential.user)})
-    .catch(error => console.log(error))
-}
+    const [bio, onChangeBio] = useState("")
+
+
+    const validate = () => {
+        if (name === "" && email === "" && password === "") {
+            throw Error("Campos incompletos")
+        }
+    }
+
+    async function userRegister() {
+        try {
+        validate()
+        await register({name,email,password,bio})
+
+    } catch(Error){alert(Error)}
+    }
     return (
         <View>
             <Text>Register </Text>
@@ -24,20 +35,24 @@ const Register = () => {
             <SafeAreaView>
                 <View>
                     <Text>Nombre de usuario</Text>
-                    <TextInput value={name} onChangeText={onChangeName} keyBoardType="default"/>
+                    <TextInput value={name} onChangeText={onChangeName} keyBoardType="default" />
                 </View>
-                
+
                 <View>
                     <Text>Email</Text>
-                    <TextInput value={email} onChangeText={onChangeEmail} keyBoardType="default"/>
+                    <TextInput value={email} onChangeText={onChangeEmail} keyBoardType="default" />
                 </View>
 
                 <View>
                     <Text>Password</Text>
-                    <TextInput value={password} onChangeText={onChangePassword} keyBoardType="default"/>
+                    <TextInput secureTextEntry={true} value={password} onChangeText={onChangePassword} keyBoardType="default" />
                 </View>
-                <Button title='Registrar'onPress={register}/>
-            </SafeAreaView>    
+                <View>
+                    <Text>Mini Bio</Text>
+                    <TextInput value={bio} onChangeText={onChangeBio} keyboardType="default"/>
+                </View>
+                <Button title='Registrar' onPress={userRegister} />
+            </SafeAreaView>
 
         </View>
     )
