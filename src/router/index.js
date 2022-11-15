@@ -29,30 +29,3 @@ const Router = () => {
 
 export default Router
 
-// ANDRES, COMO ESTAS? EN CLASE PUSIERON AL SISTEMA DE RUTAS ASI:
-
-// class MainNavigation extends Component {
-// 	constructor(props) {
-// 		super(props);
-// 		this.state = {
-// 			loggedIn: false,
-// 			registerError: '',
-// 		};
-// 	}
-
-// 	render() {
-// 		//Stack.Group funciona como React.Fragment y nos permite agrupar Screens.
-
-// 		return (
-// 			<NavigationContainer>
-// 				<Stack.Navigator>
-// 					<Stack.Screen options={{ headerShown: false }} name="Register" component={Register} />
-// 					<Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
-// 					<Stack.Screen options={{ headerShown: false }} name="Menu" component={Menu} />
-// 				</Stack.Navigator>
-// 			</NavigationContainer>
-// 		);
-// 	}
-// }
-
-// export default MainNavigation;
