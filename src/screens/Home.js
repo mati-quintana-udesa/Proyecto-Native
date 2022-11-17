@@ -1,9 +1,10 @@
 import {View, Text, Button} from 'react-native'
 
-const Home = () =>{
+const Home = ({navigation}) =>{
     return(
         <View>
             <Text>Home </Text>
+            <Button title='Crear nuevo posteo' onPress={()=>{navigation.navigate("Create-Post")}}/>
         </View>
     )
 }

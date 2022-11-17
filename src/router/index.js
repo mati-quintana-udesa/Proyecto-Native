@@ -3,10 +3,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from '../screens/Home'
 import Landing from '../screens/Landing'
 import Login from '../screens/Login'
-import Post from '../screens/Post';
+import Post from '../screens/Post/Post';
 import Profile from '../screens/Profile';
 import Register from '../screens/Register';
 import authenticationConsumer from '../firebase/authentication/authenticationProvider';
+import CreatePost from '../screens/Post/CreatePost';
 
 
 
@@ -21,6 +22,7 @@ const Router = () => {
                         <Stack.Screen name="Home" component={Home} />
                         <Stack.Screen name="Profile" component={Profile} />
                         <Stack.Screen name="Post" component={Post} />
+                        <Stack.Screen name='Create-Post' component={CreatePost}/>
                     </Stack.Group>
                 ) : (
                     <Stack.Group>

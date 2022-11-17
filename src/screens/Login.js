@@ -32,8 +32,8 @@ const Login = ({navigation}) => {
                 <TextInput style={styles.field} secureTextEntry={true} value={password} onChangeText={onChangePassword} keyBoardType="default" />
             </View>
 
-            <TouchableOpacity style={styles.button}title='Login' onPress={userLogin}/>
-            <TouchableOpacity style={styles.button} title='Registrarme' onPress={handleOnPressRegister}/> 
+            <Button title='Login' onPress={userLogin}/>
+            <Button title='Registrarme' onPress={handleOnPressRegister}/> 
             {/* <Button title='Remember me' onPress={userRegister} /> */}
         </SafeAreaView>
 

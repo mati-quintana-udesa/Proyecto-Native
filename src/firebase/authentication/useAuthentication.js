@@ -11,7 +11,8 @@ const useAuthentication = () => {
             if(au){
                 console.log("Autenticado")
                 if (!user) {
-                    setUser({isLoggedIn: true})
+                    setUser({isLoggedIn: true, uid: au.uid, email: au.email})
+                    console.log(au)
                     // getById(au.uid, FIRESTORE_FOLDER.USERS)
                     // .then(data => console.log(data))
                 }
