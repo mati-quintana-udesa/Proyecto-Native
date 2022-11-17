@@ -1,70 +1,31 @@
-import { Camera, CameraType } from "expo-camera";
+
 import { useState } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View, TextInput } from "react-native";
+import authenticationConsumer from "../../firebase/authentication/authenticationProvider";
+import { FIRESTORE_FOLDER } from "../../firebase/dataBase/fireStoreFolders";
+import { store } from "../../firebase/dataBase/fireStoreService";
+
 
 export default function CreatePost() {
-  const [type, setType] = useState(CameraType.back);
-  const [permission, requestPermission] = Camera.useCameraPermissions();
-
-  if (!permission) {
-    // Camera permissions are still loading
-    return <View />;
-  }
-
-  if (!permission.granted) {
-    // Camera permissions are not granted yet
-    return (
-      <View style={styles.container}>
-        <Text style={{ textAlign: "center" }}>
-          We need your permission to show the camera
-        </Text>
-        <Button onPress={requestPermission} title="grant permission" />
-      </View>
-    );
-  }
-
-  function toggleCameraType() {
-    setType((current) =>
-      current === CameraType.back ? CameraType.front : CameraType.back
-    );
-  }
+const {user} = authenticationConsumer()
+const [descripcion, onChangeDescrpcion] = useState("")
+function savePost(){
+    const {uid, email} = user
+    const newPost = {
+        descripcion, createAt: (new Date().toISOString()), email
+    }
+    store(uid, FIRESTORE_FOLDER.POST, newPost ) 
+        .then(response => {console.log(response); navigation.navigate("Home")})
+}
 
   return (
-    <View style={styles.container}>
-      <Camera style={styles.camera} type={type}>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-            <Text style={styles.text}>Flip Camera</Text>
-          </TouchableOpacity>
-        </View>
-      </Camera>
+    <View>
+        <Text> Crea tu post </Text>
+        <Text> Descripcion </Text>
+        <TextInput value={descripcion} onChangeText={onChangeDescrpcion} keyBoardType="default" />
+        <Button title="Guardar" onPress={savePost}/>
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-  },
-  camera: {
-    flex: 1,
-  },
-  buttonContainer: {
-    flex: 1,
-    flexDirection: "row",
-    backgroundColor: "transparent",
-    margin: 64,
-  },
-  button: {
-    flex: 1,
-    alignSelf: "flex-end",
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "white",
-  },
-});
 

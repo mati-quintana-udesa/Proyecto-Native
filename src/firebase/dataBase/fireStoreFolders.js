@@ -1,3 +1,5 @@
 export const FIRESTORE_FOLDER = { 
-    USERS:"users"
+    USERS:"users", 
+    POST:"post"
+    
 }
