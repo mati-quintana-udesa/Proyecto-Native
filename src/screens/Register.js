@@ -7,8 +7,10 @@ import authenticationConsumer from '../firebase/authentication/authenticationPro
 
 
 
-const Register = () => {
-    const {register} = authenticationConsumer()
+
+const Register = ({navigation}) => {
+    const {register, logOut} = authenticationConsumer()
+    
     const [name, onChangeName] = useState("")
     const [email, onChangeEmail] = useState("")
     const [password, onChangePassword] = useState("")
@@ -25,6 +27,7 @@ const Register = () => {
         try {
         validate()
         await register({name,email,password,bio})
+        navigation.navigate("Login")
 
     } catch(Error){alert(Error)}
     }

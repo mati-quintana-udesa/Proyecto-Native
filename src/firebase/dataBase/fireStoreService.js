@@ -20,17 +20,19 @@ export const store = async (uid, folder, data) => {
     })
 };
 
-// /***
-//  * @param {string} uid
-//  * @param {string} folder
-//  * @returns {Promise<firebase.firestore.DocumentData>} | null
-//  */
-//  export const getById = async (uid, folder) => {
-//  	if (!uid) throw new Error('USER ID is requerired!!!');
-//  	if (!folder) throw new Error('FOLDER is requerired!!!');
+/***
+ * @param {string} uid
+ * @param {string} folder
+ * @returns {Promise<firebase.firestore.DocumentData>} | null
+ */
+ export const getById = async (uid, folder) => {
+ 	if (!uid) throw new Error('USER ID is requerired!!!');
+ 	if (!folder) throw new Error('FOLDER is requerired!!!');
 
-//  	const response = doc(dbfirestore, folder, uid);
-//  	const snap = await getDoc(response);
-//  	return snap.exists() ? snap.data() : null;
-//     const querySnapshot
-//  };
+ 	// const response = doc(dbfirestore, folder, uid);
+ 	// const snap = await getDoc(response);
+ 	// return snap.exists() ? snap.data() : null;
+   const users = [] 
+   db.collection(folder).where("uid",'==', uid).onSnapshot(docs => [...users, docs]) 
+   return users
+ };
