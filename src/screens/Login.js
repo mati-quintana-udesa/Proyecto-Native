@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 
 
-const Login = ({ }) => {
+const Login = ({navigation}) => {
         const {login} = authenticationConsumer()
         
         const [email, onChangeEmail] = useState("")
@@ -16,7 +16,7 @@ const Login = ({ }) => {
             .then(()=> console.log("Logueado"))
             .catch(error => console.log(error))
         }
-
+        const handleOnPressRegister = ()=>{navigation.navigate("Register")} 
     return (
         <View>
         <Text>Login </Text>
@@ -33,6 +33,7 @@ const Login = ({ }) => {
             </View>
 
             <Button title='Login' onPress={userLogin} />
+            <Button title='Registrarme' onPress={handleOnPressRegister}/>
             {/* <Button title='Remember me' onPress={userRegister} /> */}
         </SafeAreaView>
 

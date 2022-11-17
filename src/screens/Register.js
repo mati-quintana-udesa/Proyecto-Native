@@ -31,6 +31,7 @@ const Register = ({navigation}) => {
 
     } catch(Error){alert(Error)}
     }
+    const handleOnPressLogin = ()=>{navigation.navigate("Login")}   
     return (
         <View>
             <Text>Register </Text>
@@ -55,6 +56,7 @@ const Register = ({navigation}) => {
                     <TextInput value={bio} onChangeText={onChangeBio} keyboardType="default"/>
                 </View>
                 <Button title='Registrar' onPress={userRegister} />
+                <Button title='Ya tengo cuenta' onPress={handleOnPressLogin}/>
             </SafeAreaView>
 
         </View>
