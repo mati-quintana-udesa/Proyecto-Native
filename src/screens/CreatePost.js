@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.247)",
   },
   btn: {
-    backgroundColor: "#0D4C92",
+    backgroundColor: "#CFF5E7",
     textAlign: 'center',
     padding: 7,
     margin: 10,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   btnDisabled: {
-    backgroundColor: "#CFF5E7",
+    backgroundColor: "#0D4C92",
     textAlign: 'center',
     padding: 7,
     margin: 10,

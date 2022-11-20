@@ -70,7 +70,7 @@ export default class Post extends Component {
           />
         ) : (
           <Text style={styles.comment}>
-            Aún no hay comentarios. Sé el primero en opinar.
+            Aún no hay comentarios. 
           </Text>
         )}
         <TextInput
@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    backgroundColor: "rgba(0, 0, 0, 0.247)",
+    backgroundColor: "#0D4C92",
   },
   inline: {
     flexWrap: "wrap",
@@ -142,19 +142,19 @@ const styles = StyleSheet.create({
   comment: {
     maxWidth: 170,
     padding: 5,
-    color: "white",
+    color: "black",
   },
   commentBold: {
     padding: 5,
-    color: "white",
+    color: "black",
     fontWeight: "bold",
   },
   text: {
-    color: "white",
+    color: "black",
     textAlign: "center",
   },
   btn: {
-    backgroundColor: "#ffb703",
+    backgroundColor: "#CFF5E7",
     color: "black",
     textAlign: "center",
     padding: 7,
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
   },
   btnDisabled: {
-    backgroundColor: "#e9c46a",
+    backgroundColor: "#0D4C92",
     textAlign: "center",
     padding: 7,
     marginTop: 5,
