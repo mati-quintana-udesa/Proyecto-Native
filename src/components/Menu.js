@@ -139,8 +139,8 @@ export default class Menu extends Component {
                              tabBarInactiveTintColor: "gray",
                          })}
                          tabBarOptions={{
-                             activeBackgroundColor: "#4a4e69",
-                             inactiveBackgroundColor: "#22223b",
+                             activeBackgroundColor: "#CFF5E7",
+                             inactiveBackgroundColor: "#59C1BD",
                              showLabel: false,
                          }}
                      >

@@ -142,20 +142,20 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    backgroundColor: "#A0E4CB",
+    backgroundColor: "#CFF5E7",
     color: "#ff9f68",
     paddingTop: 20,
   },
   field: {
     width: "80%",
-    backgroundColor: "#CFF5E7",
+    backgroundColor: "#C9ADA7",
     textAlign: "center",
     padding: 7,
     marginTop: 5,
     borderRadius: 15,
   },
   btn: {
-    backgroundColor: "#0D4C92",
+    backgroundColor: "#59C1BD",
     color: "white",
     textAlign: "center",
     padding: 7,
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   btnText: {
-    color: "white",
+    color: "gray",
   },
   header: {
     backgroundColor: "#0D4C92",

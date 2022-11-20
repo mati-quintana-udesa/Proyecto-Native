@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#22223b",
+    backgroundColor: "#fff",
     color: "#ff9f68",
   },
   field: {
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0, 0, 0, 0.247)",
   },
   btn: {
-    backgroundColor: "#ffb703",
+    backgroundColor: "#0D4C92",
     textAlign: 'center',
     padding: 7,
     margin: 10,
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     width: '90%',
   },
   btnDisabled: {
-    backgroundColor: "#e9c46a",
+    backgroundColor: "#CFF5E7",
     textAlign: 'center',
     padding: 7,
     margin: 10,

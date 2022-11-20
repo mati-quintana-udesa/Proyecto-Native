@@ -85,11 +85,11 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#f2e9e4",
+    backgroundColor: "#fff",
     color: "#ff9f68",
   },
   header: {
-    backgroundColor: "#22223b",
+    backgroundColor: "#59C1BD",
     width: '100%',
     padding: 10,
   },
