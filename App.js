@@ -1,11 +1,11 @@
-import Register from './src/screens/Register'
+import Login from './src/screens/Login'
 import { StyleSheet } from 'react-native';
 
 export default function App() {
   return (
 
     
-      <Register/>
+      <Login/>
    
   );
 }
