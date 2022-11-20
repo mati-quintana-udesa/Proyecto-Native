@@ -1,13 +1,11 @@
-import { AuthenticationProvider } from './src/firebase/authentication/authenticationProvider';
-import Router from './src/router';
+import Register from './src/screens/Register'
 import { StyleSheet } from 'react-native';
 
 export default function App() {
   return (
 
-    <AuthenticationProvider>
-      <Router/>
-    </AuthenticationProvider>
+    
+      <Register/>
    
   );
 }
