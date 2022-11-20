@@ -1,14 +1,12 @@
 import { Camera } from "expo-camera";
 import React, { Component } from "react";
 import {
-  Text,
-  TextInput,
   TouchableOpacity,
   View,
   StyleSheet,
   Image,
 } from "react-native";
-import { auth, db, storage } from "../firebase/config";
+import { storage } from "../firebase/config";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 export default class CreatePost extends Component {
