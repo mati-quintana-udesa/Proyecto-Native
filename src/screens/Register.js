@@ -52,7 +52,7 @@ export default class Register extends Component {
     } else if (!this.state.email.includes("@")) {
       alert("El formato de e-mail no es válido.");
     } else if (this.validateUsername()) {
-      alert("Este nombre de usuario ya está en uso. Por favor, elija otro.");
+      alert("Nombre de usuario en uso. Por favor, elija otro.");
     } else if (this.state.password.length < 6) {
       alert("La contraseña debe tener al menos 6 caracteres.");
     } else if (this.state.password !== this.state.checkPassword) {
@@ -64,7 +64,7 @@ export default class Register extends Component {
         this.state.username
       );
     }
-  } // Registrarlos
+  } 
 
   render() {
     return (

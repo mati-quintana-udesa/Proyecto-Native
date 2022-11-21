@@ -16,9 +16,9 @@ export default class Login extends Component {
 
   login() {
     if (this.state.email == "" || this.state.password == "") {
-      alert("Todos los campos son obligatorios.");
+      alert("Todos los campos son obligatorios");
     } else if (!this.state.email.includes("@")) {
-      alert("El formato de e-mail no es válido.");
+      alert("El formato de e-mail NO es válido");
     } else {
       this.props.handleLogin(this.state.email, this.state.password);
     }

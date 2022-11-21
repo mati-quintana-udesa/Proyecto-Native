@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  ActivityIndicator,
-  TextInput,
-} from "react-native";
+import {Text, View, StyleSheet, ActivityIndicator, TextInput,} from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { auth, db } from "../firebase/config";
 import Post from "../components/Post";
@@ -17,7 +11,7 @@ export default class Home extends Component {
       posts: [],
       loaderPost: true,
     };
-  } // Constructor
+  } 
 
   componentDidMount() {
     db.collection("posts")
@@ -30,14 +24,14 @@ export default class Home extends Component {
               id: doc.id,
               data: doc.data(),
             });
-          }); // For each
+          }); 
           this.setState({
             posts: postsAux,
             loaderPost: false,
           });
-        } // docs
-      ); //Snapshot
-  } //Component
+        } 
+      ); 
+  } 
 
   deletePost(param) {
     db.collection("posts")

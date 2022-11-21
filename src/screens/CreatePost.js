@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import { auth, db } from "../firebase/config";
 import MyCamera from "../components/MyCamera";
-import {
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  StyleSheet,
-  Image,
-} from "react-native";
-
+import {Text, TextInput, TouchableOpacity, View, StyleSheet, Image,} from "react-native";
 
 
 export default class CreatePost extends Component {

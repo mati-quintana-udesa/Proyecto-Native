@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  Modal,
-  FlatList,
-  ActivityIndicator,
-} from "react-native";
+import {View, Text, StyleSheet, TouchableOpacity, Modal, FlatList, ActivityIndicator, } from "react-native";
 import { auth, db } from "../firebase/config";
 import Post from "../components/Post";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -20,12 +12,12 @@ export default class Home extends Component {
       showModal: false,
       loader: true,
     };
-  } // Constructor
+  } 
 
   componentDidMount() {
     db.collection("posts")
       .where("owner", "==", auth.currentUser.displayName)
-      // .orderBy("createdAt", "desc")
+      
       .onSnapshot(
         (docs) => {
           let postsAux = [];
@@ -34,15 +26,15 @@ export default class Home extends Component {
               id: doc.id,
               data: doc.data(),
             });
-          }); // For each
+          }); 
           this.setState({
             posts: postsAux,
             loader: false,
           });
           console.log(this.state.posts);
-        } // docs
-      ); //Snapshot
-  } //Component
+        } 
+      ); 
+  } 
 
   addPostRedirect() {
     this.props.navigation.navigate("Publicar");
@@ -52,13 +44,13 @@ export default class Home extends Component {
     this.setState({
       showModal: true,
     });
-  } //Show modal
+  } 
 
   closeModal() {
     this.setState({
       showModal: false,
     });
-  } //Close modal
+  } 
 
   render() {
     return (
@@ -97,7 +89,7 @@ export default class Home extends Component {
                   />
                 </TouchableOpacity>
               </View>{" "}
-              {/* inline */}
+              {}
               {this.state.showModal ? (
                 <>
                   <Modal
@@ -130,7 +122,7 @@ export default class Home extends Component {
                 </>
               ) : null}
             </View>
-            {/* header */}
+            {}
             {this.state.posts.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
