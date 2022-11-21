@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Text, TextInput, TouchableOpacity,View, StyleSheet,} from "react-native";
-import { auth, db } from "../firebase/config";
-import { NavigationContainer } from "@react-navigation/native";
+import { db, } from "../firebase/config";
+
 
 export default class Register extends Component {
   constructor(props) {

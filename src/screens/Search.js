@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import {Text, View, StyleSheet, ActivityIndicator, TextInput, } from "react-native";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { auth, db } from "../firebase/config";
+import { FlatList, } from "react-native-gesture-handler";
+import { db, } from "../firebase/config";
 import Post from "../components/Post";
 
 export default class Search extends Component {
@@ -13,7 +13,7 @@ export default class Search extends Component {
       searchInput: "",
       users: [],
     };
-  } // Constructor
+  } 
 
   componentDidMount() {
     db.collection("posts")
@@ -26,12 +26,12 @@ export default class Search extends Component {
               id: doc.id,
               data: doc.data(),
             });
-          }); // For each
+          }); 
           this.setState({
             posts: postsAux,
           });
-        } // docs
-      ); //Snapshot
+        } 
+      );
     db.collection("users").onSnapshot(
       (docs) => {
         let usersAux = [];
@@ -39,14 +39,14 @@ export default class Search extends Component {
           usersAux.push({
             data: doc.data(),
           });
-        }); // For each
+        }); 
         this.setState({
           users: usersAux,
           loader: false,
         });
-      } // docs
-    ); //Snapshot
-  } //Component
+      } 
+    ); 
+  } 
 
   render() {
     let filteredPosts =

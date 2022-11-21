@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import {Text, View, StyleSheet, ActivityIndicator, TextInput,} from "react-native";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
+import {Text, View, StyleSheet, ActivityIndicator, } from "react-native";
+import { FlatList, } from "react-native-gesture-handler";
 import { auth, db } from "../firebase/config";
 import Post from "../components/Post";
 
