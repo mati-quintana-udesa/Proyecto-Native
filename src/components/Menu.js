@@ -25,17 +25,17 @@ export default class Menu extends Component {
 
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
-            // Para mantener logueado a un usuario
+            
             if (user) {
                 this.setState({
                     loggedIn: true,
                 });
-            } //IF
+            } 
             this.setState({
                 loader: false,
             });
         });
-    } //Component
+    } 
 
     handleRegister(email, password, username) {
         auth
@@ -58,7 +58,7 @@ export default class Menu extends Component {
                 console.log(error);
                 if (
                     error ==
-                    "Error: The email address is already in use by another account."
+                    "Error: direccion de e-mail ya en uso."
                 ) {
                     alert("Este e-mail ya está registrado. Por favor, utilice otro.");
                 }
@@ -66,8 +66,7 @@ export default class Menu extends Component {
                     error: "Error en el registro.",
                 });
             });
-    } //Register
-
+    } 
     handleLogin(email, password) {
         auth
             .signInWithEmailAndPassword(email, password)
@@ -85,7 +84,7 @@ export default class Menu extends Component {
                     error: "Error en el inicio de sesión.",
                 });
             });
-    } //Login
+    } 
 
     handleLogout() {
         auth
@@ -100,7 +99,7 @@ export default class Menu extends Component {
                 console.log(error);
                 alert("Error en el deslogueo");
             });
-    } //Logout
+    } 
 
     render() {
         const Tab = createBottomTabNavigator();
@@ -236,9 +235,9 @@ export default class Menu extends Component {
                         </Tab.Navigator>
                     )}
             </NavigationContainer>
-        ); // Return
-    } // Render
-} // Component
+        ); 
+    } 
+} 
 
 const styles = StyleSheet.create({
     container: {

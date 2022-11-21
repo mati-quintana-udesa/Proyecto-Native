@@ -3,14 +3,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
 import Comments from "../components/Comments";
-import {
-    View,
-    Text,
-    Image,
-    StyleSheet,
-    TouchableOpacity,
-    Modal,
-  } from "react-native";
+import {View, Text, Image, StyleSheet, TouchableOpacity, Modal,} from "react-native";
 
 
 export default class Post extends Component {
@@ -229,8 +222,8 @@ export default class Post extends Component {
         </View>
       </View>
     );
-  } //Render
-} // Post
+  } 
+} 
 
 const styles = StyleSheet.create({
   image: {

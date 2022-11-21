@@ -1,11 +1,6 @@
 import { Camera } from "expo-camera";
 import React, { Component } from "react";
-import {
-  TouchableOpacity,
-  View,
-  StyleSheet,
-  Image,
-} from "react-native";
+import {TouchableOpacity, View, StyleSheet, Image,} from "react-native";
 import { storage } from "../firebase/config";
 import Ionicons from "react-native-vector-icons/Ionicons";
 

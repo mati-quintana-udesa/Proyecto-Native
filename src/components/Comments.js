@@ -2,14 +2,7 @@ import React, { Component } from "react";
 import { auth, db } from "../firebase/config";
 import firebase from "firebase";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import {
-    View,
-    Text,
-    StyleSheet,
-    TouchableOpacity,
-    FlatList,
-    TextInput,
-  } from "react-native";
+import {View, Text, StyleSheet, TouchableOpacity, FlatList, TextInput, } from "react-native";
 
 export default class Post extends Component {
   constructor(props) {
@@ -76,7 +69,7 @@ export default class Post extends Component {
         <TextInput
           style={styles.field}
           keyboardType="default"
-          placeholder="Escribe un comentario..."
+          placeholder="Escribe lo que piensas..."
           placeholderTextColor="#d7d5d5"
           multiline={true}
           numberOfLines={3}
