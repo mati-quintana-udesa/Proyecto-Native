@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
   },
   field: {
     width: "80%",
-    backgroundColor: "#C9ADA7",
+    backgroundColor: "white",
     textAlign: "center",
     padding: 7,
     marginTop: 5,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     width: "80%",
   },
   btnDisabled: {
-    backgroundColor: "#0D4C92",
+    backgroundColor: "gray",
     textAlign: "center",
     padding: 7,
     marginTop: 15,
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
     color: "gray",
   },
   header: {
-    backgroundColor: "#0D4C92",
+    backgroundColor: "#59C1BD",
     width: "100%",
     padding: 10,
   },

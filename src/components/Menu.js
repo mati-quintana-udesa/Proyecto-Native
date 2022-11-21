@@ -103,7 +103,7 @@ export default class Menu extends Component {
     } //Logout
 
     render() {
-        const Drawer = createBottomTabNavigator();
+        const Tab = createBottomTabNavigator();
         const Stack = createNativeStackNavigator();
 
         return (
@@ -112,7 +112,7 @@ export default class Menu extends Component {
 
 
                     {this.state.loggedIn ? (
-                         <Drawer.Navigator
+                         <Tab.Navigator
                          initialRouteName="Login"
                          screenOptions={({ route }) => ({
                              tabBarIcon: ({ focused, color, size }) => {
@@ -145,7 +145,7 @@ export default class Menu extends Component {
                          }}
                      >
                         <>
-                            <Drawer.Screen name="Home">
+                            <Tab.Screen name="Home" options={{headerShown:false}}>
                                 {(props) => (
                                     <Home
                                         {...props}
@@ -153,11 +153,11 @@ export default class Menu extends Component {
                                         loader={this.state.loader}
                                     />
                                 )}
-                            </Drawer.Screen>
-                            <Drawer.Screen name="Publicar">
+                            </Tab.Screen>
+                            <Tab.Screen name="Publicar" options={{headerShown:false}}>
                                 {(props) => <CreatePost {...props} />}
-                            </Drawer.Screen>
-                            <Drawer.Screen name="Buscar">
+                            </Tab.Screen>
+                            <Tab.Screen name="Buscar" options={{headerShown:false}}>
                                 {(props) => (
                                     <Search
                                         {...props}
@@ -165,8 +165,8 @@ export default class Menu extends Component {
                                         loader={this.state.loader}
                                     />
                                 )}
-                            </Drawer.Screen>
-                            <Drawer.Screen name="Mi perfil">
+                            </Tab.Screen>
+                            <Tab.Screen name="Mi perfil" options={{headerShown:false}}>
                                 {(props) => (
                                     <MyProfile
                                         {...props}
@@ -174,13 +174,44 @@ export default class Menu extends Component {
                                         loader={this.state.loader}
                                     />
                                 )}
-                            </Drawer.Screen>
+                            </Tab.Screen>
                         </>
-                </Drawer.Navigator>
+                </Tab.Navigator>
 
                     ) : (
-                        <Stack.Navigator>
-                            <Stack.Screen name="Iniciar sesión">
+                        <Tab.Navigator
+                         initialRouteName="Login"
+                         screenOptions={({ route }) => ({
+                             tabBarIcon: ({ focused, color, size }) => {
+                                 let iconName;
+     
+                                 if (route.name === "Home") {
+                                     iconName = focused ? "home" : "home-outline";
+                                 } else if (route.name === "Publicar") {
+                                     iconName = focused ? "add-circle" : "add-circle-outline";
+                                 } else if (route.name === "Buscar") {
+                                     iconName = focused ? "search" : "search-outline";
+                                 } else if (route.name === "Mi perfil") {
+                                     iconName = focused ? "person" : "person-outline";
+                                 } else if (route.name === "Registrarme") {
+                                     iconName = focused ? "person-add" : "person-add-outline";
+                                 } else if (route.name === "Iniciar sesión") {
+                                     iconName = focused ? "log-in" : "log-in-outline";
+                                 }
+     
+     
+                                 return <Ionicons name={iconName} size={size} color={color} />;
+                             },
+                             tabBarActiveTintColor: "white",
+                             tabBarInactiveTintColor: "gray",
+                         })}
+                         tabBarOptions={{
+                             activeBackgroundColor: "#CFF5E7",
+                             inactiveBackgroundColor: "#59C1BD",
+                             showLabel: false,
+                         }}
+                     >
+                            <Tab.Screen name="Iniciar sesión" options={{headerShown:false}}>
                                 {(props) => (
                                     <Login
                                         {...props}
@@ -190,8 +221,8 @@ export default class Menu extends Component {
                                         loader={this.state.loader}
                                     />
                                 )}
-                            </Stack.Screen>
-                            <Stack.Screen name="Registrarme">
+                            </Tab.Screen>
+                            <Tab.Screen name="Registrarme" options={{headerShown:false}}>
                                 {(props) => (
                                     <Register
                                         {...props}
@@ -200,8 +231,9 @@ export default class Menu extends Component {
                                         }
                                     />
                                 )}
-                            </Stack.Screen>
-                        </Stack.Navigator>
+                            </Tab.Screen>
+                            
+                        </Tab.Navigator>
                     )}
             </NavigationContainer>
         ); // Return
