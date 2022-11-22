@@ -11,6 +11,7 @@ export default class Register extends Component {
       username: "",
       password: "",
       checkPassword: "",
+      bio:"",
       error: "",
       users: [],
     };
@@ -61,7 +62,9 @@ export default class Register extends Component {
       this.props.handleRegister(
         this.state.email,
         this.state.password,
-        this.state.username
+        this.state.username,
+        this.state.bio,
+
       );
     }
   } 
@@ -83,6 +86,12 @@ export default class Register extends Component {
           keyboardType="default"
           placeholder="Nombre de usuario"
           onChangeText={(text) => this.setState({ username: text })}
+        />
+        <TextInput
+          style={styles.field}
+          keyboardType="default"
+          placeholder="bio"
+          onChangeText={(text) => this.setState({ bio: text })}
         />
         <TextInput
           style={styles.field}

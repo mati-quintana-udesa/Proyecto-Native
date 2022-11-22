@@ -37,13 +37,15 @@ export default class Menu extends Component {
         });
     } 
 
-    handleRegister(email, password, username) {
+    handleRegister(email, password, username, bio) {
         auth
             .createUserWithEmailAndPassword(email, password)
             .then((response) => {
                 console.log(response);
                 db.collection("users").add({
                     username: username,
+                    email,
+                    bio,
                     createdAt: Date.now(),
                 });
                 alert("¡Usuario registrado!");
@@ -225,8 +227,8 @@ export default class Menu extends Component {
                                 {(props) => (
                                     <Register
                                         {...props}
-                                        handleRegister={(email, password, username) =>
-                                            this.handleRegister(email, password, username)
+                                        handleRegister={(email, password, username,bio) =>
+                                            this.handleRegister(email, password, username, bio)
                                         }
                                     />
                                 )}

@@ -65,7 +65,7 @@ export default class Search extends Component {
       this.state.searchInput.length > 0
         ? this.state.users.filter((element) =>{
           console.log("element",element)
-            const result = element.data.name
+            const result = element.data.username
               .toLowerCase()
               .includes(this.state.searchInput.toLowerCase()) 
             return result}
