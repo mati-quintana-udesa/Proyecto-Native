@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {View, Text, StyleSheet, TouchableOpacity, Modal, FlatList, ActivityIndicator, } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Modal, FlatList, ActivityIndicator, } from "react-native";
 import { auth, db } from "../firebase/config";
 import Post from "../components/Post";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -12,12 +12,12 @@ export default class Home extends Component {
       showModal: false,
       loader: true,
     };
-  } 
+  }
 
   componentDidMount() {
     db.collection("posts")
       .where("owner", "==", auth.currentUser.displayName)
-      
+
       .onSnapshot(
         (docs) => {
           let postsAux = [];
@@ -26,35 +26,39 @@ export default class Home extends Component {
               id: doc.id,
               data: doc.data(),
             });
-          }); 
+          });
           this.setState({
             posts: postsAux,
             loader: false,
           });
           console.log(this.state.posts);
-        } 
-      ); 
-  } 
+        }
+      );
+  }
 
   addPostRedirect() {
     this.props.navigation.navigate("Publicar");
+  }
+
+  toggleModal() {
+    this.setState({ showModal: !this.state.showModal })
   }
 
   showModal() {
     this.setState({
       showModal: true,
     });
-  } 
+  }
 
   closeModal() {
     this.setState({
       showModal: false,
     });
-  } 
+  }
 
   render() {
     return (
-      <>
+      <View>
         {this.state.loader ? (
           <ActivityIndicator size="large" color="blue" />
         ) : (
@@ -66,12 +70,9 @@ export default class Home extends Component {
                 </Text>
                 <TouchableOpacity
                   onPress={() => {
-                    {
-                      this.state.showModal
-                        ? this.closeModal()
-                        : this.showModal();
-                    }
+                    this.toggleModal()
                   }}
+
                 >
                   <Ionicons
                     style={styles.icon}
@@ -88,41 +89,42 @@ export default class Home extends Component {
                     color="white"
                   />
                 </TouchableOpacity>
-              </View>{" "}
-              {}
-              {this.state.showModal ? (
-                <>
-                  <Modal
-                    animationType="fade"
-                    transparent={false}
-                    visible={this.state.showModal}
-                    style={styles.modal}
-                  >
-                    <Text style={styles.text}>
-                      <Text style={styles.boldText}>E-mail:</Text>
-                      <Text style={styles.paddingLeft}>
-                        {auth.currentUser.email}
-                      </Text>
+              </View>
+              <View style= {styles.modalConteiner}>
+                <Modal  
+                  animationType="fade"
+                  transparent={false}
+                  visible={this.state.showModal}
+                  style={styles.modal}
+                >
+                  <Text style={styles.text}>
+                    <Text style={styles.boldText}>E-mail:</Text>
+                    <Text style={styles.paddingLeft}>
+                      {auth.currentUser.email}
                     </Text>
-                    <Text style={styles.text}>
-                      <Text style={styles.boldText}>
-                        Última fecha de ingreso:
-                      </Text>
-                      <Text style={styles.paddingLeft}>
-                        {auth.currentUser.metadata.lastSignInTime}
-                      </Text>
+                  </Text>
+                  <Text style={styles.text}>
+                    <Text style={styles.boldText}>
+                      Última fecha de ingreso:
                     </Text>
-                    <Text style={styles.text}>
-                      <Text style={styles.boldText}>Publicaciones:</Text>
-                      <Text style={styles.paddingLeft}>
-                        {this.state.posts.length}
-                      </Text>
+                    <Text style={styles.paddingLeft}>
+                      {auth.currentUser.metadata.lastSignInTime}
                     </Text>
-                  </Modal>
-                </>
-              ) : null}
+                  </Text>
+                  <Text style={styles.text}>
+                    <Text style={styles.boldText}>Publicaciones:</Text>
+                    <Text style={styles.paddingLeft}>
+                      {this.state.posts.length}
+                    </Text>
+                  </Text>
+                  <TouchableOpacity onPress={()=> {
+                    this.toggleModal()
+                  }}>
+                    <Text> cerrar modal </Text>
+                    </TouchableOpacity>
+                </Modal>
+              </View>
             </View>
-            {}
             {this.state.posts.length > 0 ? (
               <FlatList
                 showsHorizontalScrollIndicator={false}
@@ -146,7 +148,7 @@ export default class Home extends Component {
             )}
           </View>
         )}
-      </>
+      </View>
     );
   }
 }
@@ -204,29 +206,45 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     width: "80%",
   },
+  
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+
   text: {
-    color: "white",
+    color: "#000",
     textAlign: "center",
     margin: 5,
   },
   textBlack: {
-    color: "black",
+    color: "#000",
     textAlign: "center",
     margin: 30,
   },
   username: {
     textAlign: "left",
-    color: "white",
+    color: "#000",
     fontWeight: "600",
     fontSize: 15,
     padding: 5,
   },
   modal: {
-    border: "none",
-    width: "100%",
-    marginTop: 10,
-    flexDirection: "column",
-    justifyContent: "space-around",
+    margin: 20,
+    backgroundColor: '#808080',  
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5, 
   },
   boldText: {
     fontSize: "30",

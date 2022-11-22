@@ -51,29 +51,34 @@ export default class Search extends Component {
   render() {
     let filteredPosts =
       this.state.searchInput.length > 0
-        ? this.state.posts.filter((element) =>
-            element.data.owner
+        ? this.state.posts.filter((element) =>{
+            const result = element.data.owner
               .toLowerCase()
               .includes(this.state.searchInput.toLowerCase())
-          )
-        : this.state.posts;
+            console.log(result)
+          return result}
 
+          ) 
+        : this.state.posts;
+        console.log (filteredPosts)
     let filteredUsers =
       this.state.searchInput.length > 0
-        ? this.state.users.filter((element) =>
-            element.data.username
+        ? this.state.users.filter((element) =>{
+          console.log("element",element)
+            const result = element.data.name
               .toLowerCase()
-              .includes(this.state.searchInput.toLowerCase())
+              .includes(this.state.searchInput.toLowerCase()) 
+            return result}
           )
         : this.state.users;
 
     return (
-      <>
+      <View>
         <View style={styles.container}>
           {this.state.loader ? (
             <ActivityIndicator size="large" color="blue" />
           ) : (
-            <>
+            <View>
               <TextInput
                 style={styles.field}
                 keyboardType="default"
@@ -104,10 +109,10 @@ export default class Search extends Component {
                   </Text>
                 </View>
               )}
-            </>
+            </View>
           )}
         </View>
-      </>
+      </View>
     );
   }
 }

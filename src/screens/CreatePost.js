@@ -11,7 +11,7 @@ export default class CreatePost extends Component {
     this.state = {
       comment: "",
       photo: "",
-      showCamera: false,
+      showCamera: true,
     };
   } 
 
