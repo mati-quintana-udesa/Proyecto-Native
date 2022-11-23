@@ -25,17 +25,17 @@ export default class Menu extends Component {
 
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
-            
+
             if (user) {
                 this.setState({
                     loggedIn: true,
                 });
-            } 
+            }
             this.setState({
                 loader: false,
             });
         });
-    } 
+    }
 
     handleRegister(email, password, username, bio) {
         auth
@@ -68,7 +68,7 @@ export default class Menu extends Component {
                     error: "Error en el registro.",
                 });
             });
-    } 
+    }
     handleLogin(email, password) {
         auth
             .signInWithEmailAndPassword(email, password)
@@ -86,7 +86,7 @@ export default class Menu extends Component {
                     error: "Error en el inicio de sesión.",
                 });
             });
-    } 
+    }
 
     handleLogout() {
         auth
@@ -101,7 +101,7 @@ export default class Menu extends Component {
                 console.log(error);
                 alert("Error en el deslogueo");
             });
-    } 
+    }
 
     render() {
         const Tab = createBottomTabNavigator();
@@ -109,88 +109,45 @@ export default class Menu extends Component {
 
         return (
             <NavigationContainer>
-               
+                {this.state.loggedIn ? (
+                        <Tab.Navigator initialRouteName="Login" tabBarOptions={{ activeBackgroundColor: "#CFF5E7", inactiveBackgroundColor: "#59C1BD", showLabel: true, }}>
+                       
+                            <Tab.Screen name="Home" options={{ headerShown: false }}>
+                                {(props) => (<Home {...props} loggedIn={this.state.loggedIn} loader={this.state.loader}/>)}
+                            </Tab.Screen>
 
+                            <Tab.Screen name="Publicar" options={{ headerShown: false }}>
+                                {(props) => <CreatePost {...props} />} 
+                            </Tab.Screen>
 
-                    {this.state.loggedIn ? (
-                         <Tab.Navigator
-                         initialRouteName="Login"
-                         tabBarOptions={{
-                             activeBackgroundColor: "#CFF5E7",
-                             inactiveBackgroundColor: "#59C1BD",
-                             showLabel: true,
-                         }}
-                     >
-                        <>
-                            <Tab.Screen name="Home" options={{headerShown:false}}>
-                                {(props) => (
-                                    <Home
-                                        {...props}
-                                        loggedIn={this.state.loggedIn}
-                                        loader={this.state.loader}
-                                    />
-                                )}
+                            <Tab.Screen name="Buscar" options={{ headerShown: false }}>
+                                {(props) => (<Search {...props} loggedIn={this.state.loggedIn} loader={this.state.loader}/>)}
                             </Tab.Screen>
-                            <Tab.Screen name="Publicar" options={{headerShown:false}}>
-                                {(props) => <CreatePost {...props} />}
-                            </Tab.Screen>
-                            <Tab.Screen name="Buscar" options={{headerShown:false}}>
-                                {(props) => (
-                                    <Search
-                                        {...props}
-                                        loggedIn={this.state.loggedIn}
-                                        loader={this.state.loader}
-                                    />
-                                )}
-                            </Tab.Screen>
-                            <Tab.Screen name="Mi perfil" options={{headerShown:false}}>
-                                {(props) => (
-                                    <MyProfile
-                                        {...props}
-                                        handleLogout={() => this.handleLogout()}
-                                        loader={this.state.loader}
-                                    />
-                                )}
-                            </Tab.Screen>
-                        </>
-                </Tab.Navigator>
 
-                    ) : (
-                        <Tab.Navigator
-                         initialRouteName="Login"
-                         tabBarOptions={{
-                             activeBackgroundColor: "#CFF5E7",
-                             inactiveBackgroundColor: "#59C1BD",
-                             showLabel: false,
-                         }}>
-                            <Tab.Screen name="Iniciar sesión" options={{headerShown:false}}>
-                                {(props) => (
-                                    <Login
-                                        {...props}
-                                        handleLogin={(email, password) =>
-                                            this.handleLogin(email, password)
-                                        }
-                                        loader={this.state.loader}
-                                    />
-                                )}
+                            <Tab.Screen name="Mi perfil" options={{ headerShown: false }}>
+                                {(props) => (<MyProfile {...props} handleLogout={() => this.handleLogout()} loader={this.state.loader}/>)}
                             </Tab.Screen>
-                            <Tab.Screen name="Registrarme" options={{headerShown:false}}>
-                                {(props) => (
-                                    <Register
-                                        {...props}
-                                        handleRegister={(email, password, username,bio) =>
-                                            this.handleRegister(email, password, username, bio)
-                                        }
-                                    />
-                                )}
-                            </Tab.Screen>
-                            
+
                         </Tab.Navigator>
-                    )}
+                    
+                    ) : (
+                    
+                    <Tab.Navigator initialRouteName="Login" tabBarOptions={{activeBackgroundColor: "#CFF5E7", inactiveBackgroundColor: "#59C1BD", showLabel: false,}}>
+                        
+                        <Tab.Screen name="Iniciar sesión" options={{ headerShown: false }}>
+                            {(props) => (<Login {...props} handleLogin={(email, password) => this.handleLogin(email, password)} loader={this.state.loader}/>)}
+                        </Tab.Screen>
+                        
+                        <Tab.Screen name="Registrarme" options={{ headerShown: false }}>
+                            {(props) => (<Register {...props} handleRegister={(email, password, username, bio) =>this.handleRegister(email, password, username, bio)}/>)}
+                        </Tab.Screen>
+
+                    </Tab.Navigator>)
+                    }
             </NavigationContainer>
-        ); 
-    } 
-} 
+        );
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
