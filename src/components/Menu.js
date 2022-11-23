@@ -110,7 +110,7 @@ export default class Menu extends Component {
         return (
             <NavigationContainer>
                 {this.state.loggedIn ? (
-                        <Tab.Navigator initialRouteName="Login" tabBarOptions={{ activeBackgroundColor: "#CFF5E7", inactiveBackgroundColor: "#59C1BD", showLabel: true, }}>
+                        <Tab.Navigator  tabBarOptions={{ activeBackgroundColor: "#CFF5E7", inactiveBackgroundColor: "#59C1BD", showLabel: true, }}>
                        
                             <Tab.Screen name="Home" options={{ headerShown: false }}>
                                 {(props) => (<Home {...props} loggedIn={this.state.loggedIn} loader={this.state.loader}/>)}
