@@ -115,7 +115,7 @@ export default class Home extends Component {
                   <TouchableOpacity onPress={()=> {
                     this.toggleModal()
                   }}>
-                    <Text> cerrar modal </Text>
+                    <Text styles={styles.btn}> Volver a Mi Perfil </Text>
                     </TouchableOpacity>
                 </Modal>
               </View>
@@ -193,11 +193,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   btn: {
-    backgroundColor: "#ffb703",
-    color: "black",
+    backgroundColor: "#59C1BD",
+    color: "white",
     textAlign: "center",
     padding: 7,
-    marginTop: 5,
+    marginTop: 15,
     borderRadius: 15,
     width: "80%",
   },

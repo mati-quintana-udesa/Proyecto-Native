@@ -115,34 +115,10 @@ export default class Menu extends Component {
                     {this.state.loggedIn ? (
                          <Tab.Navigator
                          initialRouteName="Login"
-                         screenOptions={({ route }) => ({
-                             tabBarIcon: ({ focused, color, size }) => {
-                                 let iconName;
-     
-                                 if (route.name === "Home") {
-                                     iconName = focused ? "home" : "home-outline";
-                                 } else if (route.name === "Publicar") {
-                                     iconName = focused ? "add-circle" : "add-circle-outline";
-                                 } else if (route.name === "Buscar") {
-                                     iconName = focused ? "search" : "search-outline";
-                                 } else if (route.name === "Mi perfil") {
-                                     iconName = focused ? "person" : "person-outline";
-                                 } else if (route.name === "Registrarme") {
-                                     iconName = focused ? "person-add" : "person-add-outline";
-                                 } else if (route.name === "Iniciar sesión") {
-                                     iconName = focused ? "log-in" : "log-in-outline";
-                                 }
-     
-     
-                                 return <Ionicons name={iconName} size={size} color={color} />;
-                             },
-                             tabBarActiveTintColor: "white",
-                             tabBarInactiveTintColor: "gray",
-                         })}
                          tabBarOptions={{
                              activeBackgroundColor: "#CFF5E7",
                              inactiveBackgroundColor: "#59C1BD",
-                             showLabel: false,
+                             showLabel: true,
                          }}
                      >
                         <>
@@ -182,36 +158,11 @@ export default class Menu extends Component {
                     ) : (
                         <Tab.Navigator
                          initialRouteName="Login"
-                         screenOptions={({ route }) => ({
-                             tabBarIcon: ({ focused, color, size }) => {
-                                 let iconName;
-     
-                                 if (route.name === "Home") {
-                                     iconName = focused ? "home" : "home-outline";
-                                 } else if (route.name === "Publicar") {
-                                     iconName = focused ? "add-circle" : "add-circle-outline";
-                                 } else if (route.name === "Buscar") {
-                                     iconName = focused ? "search" : "search-outline";
-                                 } else if (route.name === "Mi perfil") {
-                                     iconName = focused ? "person" : "person-outline";
-                                 } else if (route.name === "Registrarme") {
-                                     iconName = focused ? "person-add" : "person-add-outline";
-                                 } else if (route.name === "Iniciar sesión") {
-                                     iconName = focused ? "log-in" : "log-in-outline";
-                                 }
-     
-     
-                                 return <Ionicons name={iconName} size={size} color={color} />;
-                             },
-                             tabBarActiveTintColor: "white",
-                             tabBarInactiveTintColor: "gray",
-                         })}
                          tabBarOptions={{
                              activeBackgroundColor: "#CFF5E7",
                              inactiveBackgroundColor: "#59C1BD",
                              showLabel: false,
-                         }}
-                     >
+                         }}>
                             <Tab.Screen name="Iniciar sesión" options={{headerShown:false}}>
                                 {(props) => (
                                     <Login
