@@ -102,11 +102,6 @@ export default class Home extends Component {
                     <Text style={styles.paddingLeft}>
                       {auth.currentUser.email}
                     </Text>
-                  </Text>
-                  <Text style={styles.text}>
-                    <Text style={styles.boldText}>
-                      Última fecha de ingreso:
-                    </Text>
                     <Text style={styles.paddingLeft}>
                       {auth.currentUser.metadata.lastSignInTime}
                     </Text>
