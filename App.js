@@ -1,4 +1,3 @@
-import { StyleSheet } from 'react-native';
 import Menu from './src/components/Menu';
 
 
