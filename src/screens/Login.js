@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Text, TextInput, TouchableOpacity,View, StyleSheet, ActivityIndicator} from "react-native";
 
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
@@ -62,6 +63,7 @@ export default class Login extends Component {
                       : null
                     }> Ingresar </Text>
             </TouchableOpacity>
+            
           </>
         )}
       </View>
