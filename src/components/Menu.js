@@ -105,7 +105,6 @@ export default class Menu extends Component {
 
     render() {
         const Tab = createBottomTabNavigator();
-        const Stack = createNativeStackNavigator();
 
         return (
             <NavigationContainer>
@@ -132,7 +131,7 @@ export default class Menu extends Component {
                     
                     ) : (
                     
-                    <Tab.Navigator initialRouteName="Login" tabBarOptions={{activeBackgroundColor: "#CFF5E7", inactiveBackgroundColor: "#59C1BD", showLabel: false,}}>
+                    <Tab.Navigator tabBarOptions={{activeBackgroundColor: "#CFF5E7", inactiveBackgroundColor: "#59C1BD", showLabel: false,}}>
                         
                         <Tab.Screen name="Iniciar sesión" options={{ headerShown: false }}>
                             {(props) => (<Login {...props} handleLogin={(email, password) => this.handleLogin(email, password)} loader={this.state.loader}/>)}
